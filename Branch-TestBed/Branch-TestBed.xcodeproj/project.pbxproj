@@ -356,6 +356,7 @@
 		03B49EEA25F9F315000BF105 /* UITestCase0OpenNInstall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITestCase0OpenNInstall.m; sourceTree = "<group>"; };
 		07F998EAD60325FB9FBF63FF /* QRCodeHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QRCodeHybridTest.swift; sourceTree = "<group>"; };
 		0BDDF97F86FBDB68CC1DB17B /* MobileBoost.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MobileBoost.xcconfig; sourceTree = "<group>"; };
+		18C938B7F4FDE21EE308CE9E /* Release.xctestplan */ = {isa = PBXFileReference; includeInIndex = 1; path = Release.xctestplan; sourceTree = "<group>"; };
 		1DF86E2AC9715ADCA6FC0D57 /* ConsumerProtectionHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConsumerProtectionHybridTest.swift; sourceTree = "<group>"; };
 		21A3434EE9C1066B203D549A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		23D5B75E103FE48CC35B2C2D /* EventLoggingHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EventLoggingHybridTest.swift; sourceTree = "<group>"; };
@@ -635,6 +636,7 @@
 		E7E28EC82DD2424C00F75D0D /* BNCInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCInAppBrowser.m; sourceTree = "<group>"; };
 		E7FC47722DFC7B020072B3ED /* BranchConfigurationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BranchConfigurationController.m; path = ../Sources/BranchSDK/BranchConfigurationController.m; sourceTree = "<group>"; };
 		F1D4F9AC1F323F01002D13FF /* Branch-TestBed-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch-TestBed-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC260E701BE220B2E128811D /* Smoke.xctestplan */ = {isa = PBXFileReference; includeInIndex = 1; path = Smoke.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -1036,6 +1038,7 @@
 				102DBF53CD061619BAF31076 /* Hybrid */,
 				C0F749B294D5D406792F9E71 /* AI */,
 				704F26B57C08A695724807D8 /* TestScrollHelpers.swift */,
+				6BFEC102B288139D98CB7918 /* TestPlans */,
 			);
 			name = "TestBed-GPTDriverTests";
 			path = "TestBed-GPTDriverTests";
@@ -1139,6 +1142,16 @@
 				670016711940F51400A9E103 /* Branch-TestBed-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6BFEC102B288139D98CB7918 /* TestPlans */ = {
+			isa = PBXGroup;
+			children = (
+				FC260E701BE220B2E128811D /* Smoke.xctestplan */,
+				18C938B7F4FDE21EE308CE9E /* Release.xctestplan */,
+			);
+			name = TestPlans;
+			path = TestPlans;
 			sourceTree = "<group>";
 		};
 		BE4A694F8CCA8A9DE816FD35 /* Deterministic */ = {
