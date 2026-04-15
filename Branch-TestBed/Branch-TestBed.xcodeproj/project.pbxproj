@@ -18,6 +18,7 @@
 		0B22D2799F50232AE6C93C4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A3434EE9C1066B203D549A /* Foundation.framework */; };
 		0CD19A4FAAC3DC790D05398E /* gptd-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 84BBC5418F3C729A5F490A07 /* gptd-swift */; };
 		143A1100894AF12F8F5E4CFB /* TestBedIdentifiers.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1798D4BBC4E0E40ADA9310 /* TestBedIdentifiers.m */; };
+		1CBDF03ECD47630F858956A7 /* UserIdentityHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB024C029C70375502663D2 /* UserIdentityHybridTest.swift */; };
 		257BD6BD304B0B87C0BDF67C /* BaseGptDriverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8D33407DECC9492C3C644C /* BaseGptDriverTest.swift */; };
 		2FE60ACC53E3DDB95CB49E7C /* LinkCreationHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40837FC18222BFAADDC90C48 /* LinkCreationHybridTest.swift */; };
 		466B584F1B17775900A69EDE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67BBCF271A69E49A009C7DAE /* AdSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -41,6 +42,7 @@
 		4D93D8622098D43C00CFABA6 /* UITestSafari.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D93D8602098D43C00CFABA6 /* UITestSafari.m */; };
 		4DBEFFF61FB114F900F7C41B /* ArrayPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBEFFF51FB114F900F7C41B /* ArrayPickerView.m */; };
 		4DE235641FB12C2700D4E5A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DBEFFFB1FB12A1000F7C41B /* Main.storyboard */; };
+		505878246DFBFD4C0CA6A6FA /* ShareLinkHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13A03B363788986D842EB8F /* ShareLinkHybridTest.swift */; };
 		5F205D05231864E800C776D1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F205D04231864E800C776D1 /* WebKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		5F205D062318659500C776D1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F205D04231864E800C776D1 /* WebKit.framework */; };
 		5F205D0823186AF700C776D1 /* BNCUserAgentCollectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F205D022318641700C776D1 /* BNCUserAgentCollectorTests.m */; };
@@ -228,6 +230,8 @@
 		6700167A1940F51400A9E103 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 670016791940F51400A9E103 /* ViewController.m */; };
 		67F270891BA9FCFF002546A7 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F270881BA9FCFF002546A7 /* CoreSpotlight.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7B9CCA006CB28F77B067A36C /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		8909A6D6A78237ACCB8496D6 /* EventLoggingHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5B75E103FE48CC35B2C2D /* EventLoggingHybridTest.swift */; };
+		959C9C6A9AF35A32CE92F363 /* QRCodeHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F998EAD60325FB9FBF63FF /* QRCodeHybridTest.swift */; };
 		AA12345600010000000000B1 /* BranchDisableNextForegroundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA12345600010000000000A1 /* BranchDisableNextForegroundTests.m */; };
 		B9F5DA27F77E0A392BD2E69A /* TestBedIdentifiers.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1798D4BBC4E0E40ADA9310 /* TestBedIdentifiers.m */; };
 		C10A6DE629A995590061A851 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = C10A6DE529A995590061A851 /* StoreKitTestCertificate.cer */; };
@@ -257,6 +261,8 @@
 		EBB12FFFEE5BB34E5505BBB9 /* LinkCreationAITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C67D93BFFFC0217931CBB1 /* LinkCreationAITest.swift */; };
 		F1B8BAB9737C612F85D5E801 /* TestBedIdentifiers.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DF18A2F7FEBD06E1EBB8FD5 /* TestBedIdentifiers.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F1CF14111F4CC79F00BB2694 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F270881BA9FCFF002546A7 /* CoreSpotlight.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		F75975E5DF4BEE735A974B7D /* SessionAndLogsHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B6E3C699AD53EFF4F5D9B /* SessionAndLogsHybridTest.swift */; };
+		FA0EDB9AC11B2D654496E492 /* TestScrollHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704F26B57C08A695724807D8 /* TestScrollHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -340,8 +346,10 @@
 		0372078725E9F81000F29C30 /* UITestCaseMisc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITestCaseMisc.m; sourceTree = "<group>"; };
 		0399DD112599BF8A00CDB36E /* UITestSendV2Event.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITestSendV2Event.m; sourceTree = "<group>"; };
 		03B49EEA25F9F315000BF105 /* UITestCase0OpenNInstall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITestCase0OpenNInstall.m; sourceTree = "<group>"; };
+		07F998EAD60325FB9FBF63FF /* QRCodeHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QRCodeHybridTest.swift; sourceTree = "<group>"; };
 		0BDDF97F86FBDB68CC1DB17B /* MobileBoost.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MobileBoost.xcconfig; sourceTree = "<group>"; };
 		21A3434EE9C1066B203D549A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		23D5B75E103FE48CC35B2C2D /* EventLoggingHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EventLoggingHybridTest.swift; sourceTree = "<group>"; };
 		25411D6F29809D769F33D4BE /* MobileBoost.local.xcconfig.example */ = {isa = PBXFileReference; includeInIndex = 1; path = MobileBoost.local.xcconfig.example; sourceTree = "<group>"; };
 		40837FC18222BFAADDC90C48 /* LinkCreationHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkCreationHybridTest.swift; sourceTree = "<group>"; };
 		466B58381B17773000A69EDE /* libBranch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBranch.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -371,6 +379,7 @@
 		4DD056132177A65C009BD3DD /* libOHHTTPStubs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libOHHTTPStubs.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDC52611DCC08E700CFB737 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		4DF18A2F7FEBD06E1EBB8FD5 /* TestBedIdentifiers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TestBedIdentifiers.h; sourceTree = "<group>"; };
+		506B6E3C699AD53EFF4F5D9B /* SessionAndLogsHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SessionAndLogsHybridTest.swift; sourceTree = "<group>"; };
 		5D8D33407DECC9492C3C644C /* BaseGptDriverTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseGptDriverTest.swift; sourceTree = "<group>"; };
 		5F2035CB240DDE90004FDC3E /* BNCDisableAdNetworkCalloutsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCDisableAdNetworkCalloutsTests.m; sourceTree = "<group>"; };
 		5F205D022318641700C776D1 /* BNCUserAgentCollectorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCUserAgentCollectorTests.m; sourceTree = "<group>"; };
@@ -572,7 +581,10 @@
 		67BBCF271A69E49A009C7DAE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		67F270881BA9FCFF002546A7 /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		68C67D93BFFFC0217931CBB1 /* LinkCreationAITest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkCreationAITest.swift; sourceTree = "<group>"; };
+		704F26B57C08A695724807D8 /* TestScrollHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TestScrollHelpers.swift; sourceTree = "<group>"; };
 		7E6B3B511AA42D0E005F45BF /* Branch-SDK-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch-SDK-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CB024C029C70375502663D2 /* UserIdentityHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserIdentityHybridTest.swift; sourceTree = "<group>"; };
+		A13A03B363788986D842EB8F /* ShareLinkHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShareLinkHybridTest.swift; sourceTree = "<group>"; };
 		AA12345600010000000000A1 /* BranchDisableNextForegroundTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BranchDisableNextForegroundTests.m; sourceTree = "<group>"; };
 		ACF0972B844F3483686EF054 /* TestBed-GPTDriverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TestBed-GPTDriverTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10A6DE029A97E440061A851 /* TestStoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestStoreKitConfig.storekit; sourceTree = "<group>"; };
@@ -706,6 +718,11 @@
 			isa = PBXGroup;
 			children = (
 				40837FC18222BFAADDC90C48 /* LinkCreationHybridTest.swift */,
+				07F998EAD60325FB9FBF63FF /* QRCodeHybridTest.swift */,
+				A13A03B363788986D842EB8F /* ShareLinkHybridTest.swift */,
+				506B6E3C699AD53EFF4F5D9B /* SessionAndLogsHybridTest.swift */,
+				9CB024C029C70375502663D2 /* UserIdentityHybridTest.swift */,
+				23D5B75E103FE48CC35B2C2D /* EventLoggingHybridTest.swift */,
 			);
 			name = Hybrid;
 			path = Hybrid;
@@ -994,6 +1011,7 @@
 				BE4A694F8CCA8A9DE816FD35 /* Deterministic */,
 				102DBF53CD061619BAF31076 /* Hybrid */,
 				C0F749B294D5D406792F9E71 /* AI */,
+				704F26B57C08A695724807D8 /* TestScrollHelpers.swift */,
 			);
 			name = "TestBed-GPTDriverTests";
 			path = "TestBed-GPTDriverTests";
@@ -1684,6 +1702,12 @@
 				2FE60ACC53E3DDB95CB49E7C /* LinkCreationHybridTest.swift in Sources */,
 				EBB12FFFEE5BB34E5505BBB9 /* LinkCreationAITest.swift in Sources */,
 				143A1100894AF12F8F5E4CFB /* TestBedIdentifiers.m in Sources */,
+				FA0EDB9AC11B2D654496E492 /* TestScrollHelpers.swift in Sources */,
+				959C9C6A9AF35A32CE92F363 /* QRCodeHybridTest.swift in Sources */,
+				505878246DFBFD4C0CA6A6FA /* ShareLinkHybridTest.swift in Sources */,
+				F75975E5DF4BEE735A974B7D /* SessionAndLogsHybridTest.swift in Sources */,
+				1CBDF03ECD47630F858956A7 /* UserIdentityHybridTest.swift in Sources */,
+				8909A6D6A78237ACCB8496D6 /* EventLoggingHybridTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
