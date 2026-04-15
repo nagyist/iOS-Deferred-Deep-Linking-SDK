@@ -15,6 +15,9 @@
 		0372078825E9F81100F29C30 /* UITestCaseMisc.m in Sources */ = {isa = PBXBuildFile; fileRef = 0372078725E9F81000F29C30 /* UITestCaseMisc.m */; };
 		0399DD122599BF8A00CDB36E /* UITestSendV2Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0399DD112599BF8A00CDB36E /* UITestSendV2Event.m */; };
 		03B49EEB25F9F315000BF105 /* UITestCase0OpenNInstall.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B49EEA25F9F315000BF105 /* UITestCase0OpenNInstall.m */; };
+		0B22D2799F50232AE6C93C4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A3434EE9C1066B203D549A /* Foundation.framework */; };
+		0CD19A4FAAC3DC790D05398E /* gptd-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 84BBC5418F3C729A5F490A07 /* gptd-swift */; };
+		257BD6BD304B0B87C0BDF67C /* BaseGptDriverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8D33407DECC9492C3C644C /* BaseGptDriverTest.swift */; };
 		466B584F1B17775900A69EDE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67BBCF271A69E49A009C7DAE /* AdSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		466B58521B17776500A69EDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670016631940F51400A9E103 /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		466B58531B17776A00A69EDE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670016671940F51400A9E103 /* UIKit.framework */; };
@@ -222,6 +225,7 @@
 		670016701940F51400A9E103 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6700166F1940F51400A9E103 /* main.m */; };
 		6700167A1940F51400A9E103 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 670016791940F51400A9E103 /* ViewController.m */; };
 		67F270891BA9FCFF002546A7 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F270881BA9FCFF002546A7 /* CoreSpotlight.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7B9CCA006CB28F77B067A36C /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		AA12345600010000000000B1 /* BranchDisableNextForegroundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA12345600010000000000A1 /* BranchDisableNextForegroundTests.m */; };
 		B9F5DA27F77E0A392BD2E69A /* TestBedIdentifiers.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1798D4BBC4E0E40ADA9310 /* TestBedIdentifiers.m */; };
 		C10A6DE629A995590061A851 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = C10A6DE529A995590061A851 /* StoreKitTestCertificate.cer */; };
@@ -287,6 +291,13 @@
 			remoteGlobalIDString = 6700165F1940F51400A9E103;
 			remoteInfo = "Branch-TestBed";
 		};
+		E7ABE7BF4A8A258818FBA303 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 670016581940F51400A9E103 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6700165F1940F51400A9E103;
+			remoteInfo = "Branch-TestBed";
+		};
 		E7AC74652DB064BC002D8C40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 670016581940F51400A9E103 /* Project object */;
@@ -325,7 +336,11 @@
 		0372078725E9F81000F29C30 /* UITestCaseMisc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITestCaseMisc.m; sourceTree = "<group>"; };
 		0399DD112599BF8A00CDB36E /* UITestSendV2Event.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITestSendV2Event.m; sourceTree = "<group>"; };
 		03B49EEA25F9F315000BF105 /* UITestCase0OpenNInstall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITestCase0OpenNInstall.m; sourceTree = "<group>"; };
+		0BDDF97F86FBDB68CC1DB17B /* MobileBoost.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MobileBoost.xcconfig; sourceTree = "<group>"; };
+		21A3434EE9C1066B203D549A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		25411D6F29809D769F33D4BE /* MobileBoost.local.xcconfig.example */ = {isa = PBXFileReference; includeInIndex = 1; path = MobileBoost.local.xcconfig.example; sourceTree = "<group>"; };
 		466B58381B17773000A69EDE /* libBranch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBranch.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		49114296F0B11A2DEB7FFECD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AB16367239E3A2700D42931 /* DispatchToIsolationQueueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DispatchToIsolationQueueTests.m; sourceTree = "<group>"; };
 		4D1683812098C901008819E3 /* Branch-SDK-Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Branch-SDK-Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		4D1683842098C901008819E3 /* BNCLinkDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCLinkDataTests.m; sourceTree = "<group>"; };
@@ -351,6 +366,7 @@
 		4DD056132177A65C009BD3DD /* libOHHTTPStubs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libOHHTTPStubs.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDC52611DCC08E700CFB737 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		4DF18A2F7FEBD06E1EBB8FD5 /* TestBedIdentifiers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TestBedIdentifiers.h; sourceTree = "<group>"; };
+		5D8D33407DECC9492C3C644C /* BaseGptDriverTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseGptDriverTest.swift; sourceTree = "<group>"; };
 		5F2035CB240DDE90004FDC3E /* BNCDisableAdNetworkCalloutsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCDisableAdNetworkCalloutsTests.m; sourceTree = "<group>"; };
 		5F205D022318641700C776D1 /* BNCUserAgentCollectorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCUserAgentCollectorTests.m; sourceTree = "<group>"; };
 		5F205D04231864E800C776D1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -552,6 +568,7 @@
 		67F270881BA9FCFF002546A7 /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		7E6B3B511AA42D0E005F45BF /* Branch-SDK-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch-SDK-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA12345600010000000000A1 /* BranchDisableNextForegroundTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BranchDisableNextForegroundTests.m; sourceTree = "<group>"; };
+		ACF0972B844F3483686EF054 /* TestBed-GPTDriverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TestBed-GPTDriverTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10A6DE029A97E440061A851 /* TestStoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestStoreKitConfig.storekit; sourceTree = "<group>"; };
 		C10A6DE529A995590061A851 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		C10C61A9282481FB00761D7E /* BranchShareLinkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BranchShareLinkTests.m; sourceTree = "<group>"; };
@@ -563,6 +580,7 @@
 		C17DAF7A2AC20C2000B16B1A /* BranchClassTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BranchClassTests.m; sourceTree = "<group>"; };
 		C1CC888129BAAFC000BDD2B5 /* BNCReferringURLUtilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCReferringURLUtilityTests.m; sourceTree = "<group>"; };
 		CC1798D4BBC4E0E40ADA9310 /* TestBedIdentifiers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TestBedIdentifiers.m; sourceTree = "<group>"; };
+		E50AA43771267258B0293FD1 /* TestBed-GPTDriverTests-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TestBed-GPTDriverTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		E51F64292CF46899000858D2 /* BranchFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchFileLogger.h; sourceTree = "<group>"; };
 		E563942F2CC7AC9500E18E65 /* BranchFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchFileLogger.m; sourceTree = "<group>"; };
 		E71E397A2DD3C14800110F59 /* BNCInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCInAppBrowser.h; sourceTree = "<group>"; };
@@ -599,6 +617,16 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1C5D3599943B2AF1082E434F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B22D2799F50232AE6C93C4A /* Foundation.framework in Frameworks */,
+				7B9CCA006CB28F77B067A36C /* BuildFile in Frameworks */,
+				0CD19A4FAAC3DC790D05398E /* gptd-swift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		466B58351B17773000A69EDE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -667,6 +695,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33FA553881D43B8F51D3629A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				21A3434EE9C1066B203D549A /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		4D16837A2098C901008819E3 /* Branch-SDK-Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -932,6 +968,18 @@
 			path = cannedData;
 			sourceTree = "<group>";
 		};
+		6582C60A6E8FB0C91C7EBE0C /* TestBed-GPTDriverTests */ = {
+			isa = PBXGroup;
+			children = (
+				FE42883A925072362E7A094D /* Config */,
+				5D8D33407DECC9492C3C644C /* BaseGptDriverTest.swift */,
+				E50AA43771267258B0293FD1 /* TestBed-GPTDriverTests-Bridging-Header.h */,
+				49114296F0B11A2DEB7FFECD /* Info.plist */,
+			);
+			name = "TestBed-GPTDriverTests";
+			path = "TestBed-GPTDriverTests";
+			sourceTree = "<group>";
+		};
 		670016571940F51400A9E103 = {
 			isa = PBXGroup;
 			children = (
@@ -949,6 +997,7 @@
 				E7AC74612DB064BC002D8C40 /* Reflection_ODM_Tests */,
 				670016621940F51400A9E103 /* Frameworks */,
 				670016611940F51400A9E103 /* Products */,
+				6582C60A6E8FB0C91C7EBE0C /* TestBed-GPTDriverTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -961,6 +1010,7 @@
 				F1D4F9AC1F323F01002D13FF /* Branch-TestBed-UITests.xctest */,
 				5F8B7B3B21B5F5CD009CE0A6 /* Branch-SDK-Unhosted-Tests.xctest */,
 				E7AC74602DB064BC002D8C40 /* Reflection_ODM_Tests.xctest */,
+				ACF0972B844F3483686EF054 /* TestBed-GPTDriverTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -986,6 +1036,7 @@
 				670016631940F51400A9E103 /* Foundation.framework */,
 				670016651940F51400A9E103 /* CoreGraphics.framework */,
 				670016671940F51400A9E103 /* UIKit.framework */,
+				33FA553881D43B8F51D3629A /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1027,6 +1078,16 @@
 				670016711940F51400A9E103 /* Branch-TestBed-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FE42883A925072362E7A094D /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				0BDDF97F86FBDB68CC1DB17B /* MobileBoost.xcconfig */,
+				25411D6F29809D769F33D4BE /* MobileBoost.local.xcconfig.example */,
+			);
+			name = Config;
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1201,6 +1262,27 @@
 			productReference = 7E6B3B511AA42D0E005F45BF /* Branch-SDK-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		AAC5A9A76F3DBB04E6638F31 /* TestBed-GPTDriverTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C4C785331DF108512EC93F2 /* Build configuration list for PBXNativeTarget "TestBed-GPTDriverTests" */;
+			buildPhases = (
+				830B3D68A4D135BCDED3AF12 /* Sources */,
+				1C5D3599943B2AF1082E434F /* Frameworks */,
+				A1B69B214CA8E570289FE6E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				98FBE51F1B1C9827C2CF0EA6 /* PBXTargetDependency */,
+			);
+			name = "TestBed-GPTDriverTests";
+			packageProductDependencies = (
+				84BBC5418F3C729A5F490A07 /* gptd-swift */,
+			);
+			productName = "TestBed-GPTDriverTests";
+			productReference = ACF0972B844F3483686EF054 /* TestBed-GPTDriverTests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		E7AC745F2DB064BC002D8C40 /* Reflection_ODM_Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7AC74672DB064BC002D8C40 /* Build configuration list for PBXNativeTarget "Reflection_ODM_Tests" */;
@@ -1282,6 +1364,11 @@
 						LastSwiftMigration = 1030;
 						TestTargetID = 6700165F1940F51400A9E103;
 					};
+					AAC5A9A76F3DBB04E6638F31 = {
+						CreatedOnToolsVersion = 16.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6700165F1940F51400A9E103;
+					};
 					E7AC745F2DB064BC002D8C40 = {
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 6700165F1940F51400A9E103;
@@ -1306,6 +1393,7 @@
 			packageReferences = (
 				E7AC74792DB0700D002D8C40 /* XCLocalSwiftPackageReference "ios-branch-deep-linking-attribution" */,
 				E732827D2E5F7D92005CACC8 /* XCRemoteSwiftPackageReference "google-ads-on-device-conversion-ios-sdk" */,
+				D0973F95A101C4673FDC92A1 /* XCRemoteSwiftPackageReference "gptd-swift" */,
 			);
 			productRefGroup = 670016611940F51400A9E103 /* Products */;
 			projectDirPath = "";
@@ -1317,6 +1405,7 @@
 				5F8B7B3A21B5F5CD009CE0A6 /* Branch-SDK-Unhosted-Tests */,
 				F1D4F9AB1F323F01002D13FF /* Branch-TestBed-UITests */,
 				E7AC745F2DB064BC002D8C40 /* Reflection_ODM_Tests */,
+				AAC5A9A76F3DBB04E6638F31 /* TestBed-GPTDriverTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1350,6 +1439,13 @@
 				5FC4CF9024860C440001E701 /* example.json in Resources */,
 				5FC4CF9224860C440001E701 /* latd_missing_data.json in Resources */,
 				5FC4CF8D24860C440001E701 /* latd_missing_window.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B69B214CA8E570289FE6E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1542,6 +1638,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		830B3D68A4D135BCDED3AF12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				257BD6BD304B0B87C0BDF67C /* BaseGptDriverTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7AC745C2DB064BC002D8C40 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1587,6 +1691,12 @@
 			target = 466B58371B17773000A69EDE /* Branch */;
 			targetProxy = 5F8B7B4121B5F5CD009CE0A6 /* PBXContainerItemProxy */;
 		};
+		98FBE51F1B1C9827C2CF0EA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Branch-TestBed";
+			target = 6700165F1940F51400A9E103 /* Branch-TestBed */;
+			targetProxy = E7ABE7BF4A8A258818FBA303 /* PBXContainerItemProxy */;
+		};
 		E73282822E5F81C9005CACC8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6700165F1940F51400A9E103 /* Branch-TestBed */;
@@ -1616,6 +1726,41 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3486B3718FE8B6C8A863A09C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BDDF97F86FBDB68CC1DB17B /* MobileBoost.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Branch-TestBed",
+				);
+				INFOPLIST_FILE = "TestBed-GPTDriverTests/Info.plist";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "$(inherited)";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.TestBed-GPTDriverTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "TestBed-GPTDriverTests/TestBed-GPTDriverTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Branch-TestBed";
+			};
+			name = Debug;
+		};
 		466B58491B17773000A69EDE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1924,6 +2069,42 @@
 			};
 			name = Release;
 		};
+		AA4A3EF83BDE3C4D3218FF4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BDDF97F86FBDB68CC1DB17B /* MobileBoost.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Branch-TestBed",
+				);
+				INFOPLIST_FILE = "TestBed-GPTDriverTests/Info.plist";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "$(inherited)";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.TestBed-GPTDriverTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "TestBed-GPTDriverTests/TestBed-GPTDriverTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Branch-TestBed";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		E7AC74682DB064BC002D8C40 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2071,6 +2252,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		7C4C785331DF108512EC93F2 /* Build configuration list for PBXNativeTarget "TestBed-GPTDriverTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA4A3EF83BDE3C4D3218FF4D /* Release */,
+				3486B3718FE8B6C8A863A09C /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7E6B3B571AA42D0E005F45BF /* Build configuration list for PBXNativeTarget "Branch-SDK-Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2108,6 +2298,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D0973F95A101C4673FDC92A1 /* XCRemoteSwiftPackageReference "gptd-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MobileBoostHQ/gptd-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.1;
+			};
+		};
 		E732827D2E5F7D92005CACC8 /* XCRemoteSwiftPackageReference "google-ads-on-device-conversion-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/google-ads-on-device-conversion-ios-sdk";
@@ -2119,6 +2317,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		84BBC5418F3C729A5F490A07 /* gptd-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0973F95A101C4673FDC92A1 /* XCRemoteSwiftPackageReference "gptd-swift" */;
+			productName = "gptd-swift";
+		};
 		E732827E2E5F7D92005CACC8 /* GoogleAdsOnDeviceConversion */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E732827D2E5F7D92005CACC8 /* XCRemoteSwiftPackageReference "google-ads-on-device-conversion-ios-sdk" */;
