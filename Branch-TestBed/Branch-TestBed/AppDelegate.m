@@ -94,9 +94,50 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"Logging Early Event: %@", earlyEvent);
     [earlyEvent logEvent];
 
-    
+
     // Push notification support (Optional)
     // [self registerForPushNotifications:application];
+
+#if DEBUG
+    // MobileBoost test-only hook: simulates a Universal Link arrival when
+    // the app is launched with `-testDeepLinkURL <url>` as a launch argument.
+    //
+    // This is what TestBed-GPTDriverTests/Hybrid/DeepLink* tests rely on.
+    // Simulator builds (no code signing) do not honor the
+    // `com.apple.developer.associated-domains` entitlement, so Safari-based
+    // Universal Link handoff never fires in XCUITest. Instead the test
+    // passes the generated Branch link via launchArguments, and this hook
+    // constructs an NSUserActivity of type NSUserActivityTypeBrowsingWeb
+    // and calls `application:continueUserActivity:` — exactly the code path
+    // iOS would use for a real Universal Link delivery. The Branch SDK
+    // resolves the link metadata identically in both cases.
+    //
+    // Wrapped in `#if DEBUG` so it never ships in Release builds.
+    NSString *testDeepLinkURL = [[NSUserDefaults standardUserDefaults] stringForKey:@"testDeepLinkURL"];
+    if (testDeepLinkURL.length > 0) {
+        NSURL *url = [NSURL URLWithString:testDeepLinkURL];
+        if (url != nil) {
+            NSLog(@"[TestHook] -testDeepLinkURL received: %@", testDeepLinkURL);
+            // Delay 1.5s so Branch.initSessionWithLaunchOptions has time to
+            // register the deep link handler and complete the initial open
+            // request before we deliver the synthetic continueUserActivity.
+            dispatch_after(
+                dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)),
+                dispatch_get_main_queue(),
+                ^{
+                    NSUserActivity *activity = [[NSUserActivity alloc]
+                        initWithActivityType:NSUserActivityTypeBrowsingWeb];
+                    activity.webpageURL = url;
+                    NSLog(@"[TestHook] Delivering synthetic continueUserActivity: %@", url);
+                    [self application:application
+                         continueUserActivity:activity
+                           restorationHandler:^(NSArray<id<UIUserActivityRestoring>> * _Nullable restorableObjects) {
+                               NSLog(@"[TestHook] Synthetic continueUserActivity restorationHandler called");
+                           }];
+                });
+        }
+    }
+#endif
 
     return YES;
 }
