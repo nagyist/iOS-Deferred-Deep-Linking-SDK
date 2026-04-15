@@ -18,6 +18,7 @@
 		0B22D2799F50232AE6C93C4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A3434EE9C1066B203D549A /* Foundation.framework */; };
 		0CD19A4FAAC3DC790D05398E /* gptd-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 84BBC5418F3C729A5F490A07 /* gptd-swift */; };
 		143A1100894AF12F8F5E4CFB /* TestBedIdentifiers.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1798D4BBC4E0E40ADA9310 /* TestBedIdentifiers.m */; };
+		15843A0C5EBB44E872DFDF8A /* TrackingControlHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BF08D3B7BD908C97F47144 /* TrackingControlHybridTest.swift */; };
 		1CBDF03ECD47630F858956A7 /* UserIdentityHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB024C029C70375502663D2 /* UserIdentityHybridTest.swift */; };
 		257BD6BD304B0B87C0BDF67C /* BaseGptDriverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8D33407DECC9492C3C644C /* BaseGptDriverTest.swift */; };
 		2FE60ACC53E3DDB95CB49E7C /* LinkCreationHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40837FC18222BFAADDC90C48 /* LinkCreationHybridTest.swift */; };
@@ -231,6 +232,8 @@
 		6700167A1940F51400A9E103 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 670016791940F51400A9E103 /* ViewController.m */; };
 		67F270891BA9FCFF002546A7 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F270881BA9FCFF002546A7 /* CoreSpotlight.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7B9CCA006CB28F77B067A36C /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		805069B9222DE6DBB702BA55 /* ConsumerProtectionHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF86E2AC9715ADCA6FC0D57 /* ConsumerProtectionHybridTest.swift */; };
+		884BEA1B0B010B65568A9135 /* PluginNotifyHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E744D97C008B4DBA0445A4F /* PluginNotifyHybridTest.swift */; };
 		8909A6D6A78237ACCB8496D6 /* EventLoggingHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5B75E103FE48CC35B2C2D /* EventLoggingHybridTest.swift */; };
 		959C9C6A9AF35A32CE92F363 /* QRCodeHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F998EAD60325FB9FBF63FF /* QRCodeHybridTest.swift */; };
 		9BEC6ECEF0E0BF1E734B843D /* NotificationHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D4DC04AFC52EEBC6E0120A /* NotificationHybridTest.swift */; };
@@ -247,6 +250,7 @@
 		D90E8A6639F523DC3B08FBCE /* LinkCreationDeterministicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA914FAFCA750AE7C6CDCFCC /* LinkCreationDeterministicTest.swift */; };
 		DAEFBE7C9FFBD455BFBF4EC7 /* DeepLinkWarmOpenHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F886CF5254858874E0154 /* DeepLinkWarmOpenHybridTest.swift */; };
 		DB18DA9C84F60B550B04B3FC /* DeepLinkColdOpenHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B868E49743EF400DE3CA1 /* DeepLinkColdOpenHybridTest.swift */; };
+		E369CEFCE0B1105282B6E900 /* ReferringParamsHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C68E10670CEE96DC0A93D /* ReferringParamsHybridTest.swift */; };
 		E51F642A2CF46899000858D2 /* BranchFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = E51F64292CF46899000858D2 /* BranchFileLogger.h */; };
 		E56394312CC7AC9F00E18E65 /* BranchFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E563942F2CC7AC9500E18E65 /* BranchFileLogger.m */; };
 		E71E397B2DD3C14800110F59 /* BNCInAppBrowser.h in Headers */ = {isa = PBXBuildFile; fileRef = E71E397A2DD3C14800110F59 /* BNCInAppBrowser.h */; };
@@ -352,9 +356,11 @@
 		03B49EEA25F9F315000BF105 /* UITestCase0OpenNInstall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITestCase0OpenNInstall.m; sourceTree = "<group>"; };
 		07F998EAD60325FB9FBF63FF /* QRCodeHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QRCodeHybridTest.swift; sourceTree = "<group>"; };
 		0BDDF97F86FBDB68CC1DB17B /* MobileBoost.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MobileBoost.xcconfig; sourceTree = "<group>"; };
+		1DF86E2AC9715ADCA6FC0D57 /* ConsumerProtectionHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConsumerProtectionHybridTest.swift; sourceTree = "<group>"; };
 		21A3434EE9C1066B203D549A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		23D5B75E103FE48CC35B2C2D /* EventLoggingHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EventLoggingHybridTest.swift; sourceTree = "<group>"; };
 		25411D6F29809D769F33D4BE /* MobileBoost.local.xcconfig.example */ = {isa = PBXFileReference; includeInIndex = 1; path = MobileBoost.local.xcconfig.example; sourceTree = "<group>"; };
+		29BF08D3B7BD908C97F47144 /* TrackingControlHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TrackingControlHybridTest.swift; sourceTree = "<group>"; };
 		2C6F886CF5254858874E0154 /* DeepLinkWarmOpenHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeepLinkWarmOpenHybridTest.swift; sourceTree = "<group>"; };
 		40837FC18222BFAADDC90C48 /* LinkCreationHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkCreationHybridTest.swift; sourceTree = "<group>"; };
 		466B58381B17773000A69EDE /* libBranch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBranch.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -568,6 +574,7 @@
 		63E4C48A1D25E17B00A45FD8 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		63E4C48F1D25E1BC00A45FD8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63E4C4911D25E1CA00A45FD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		656C68E10670CEE96DC0A93D /* ReferringParamsHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReferringParamsHybridTest.swift; sourceTree = "<group>"; };
 		6589EBA52674270100F2E28B /* Branch-TestBed-CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Branch-TestBed-CI.xctestplan"; sourceTree = "<group>"; };
 		670016601940F51400A9E103 /* Branch-TestBed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Branch-TestBed.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		670016631940F51400A9E103 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -586,6 +593,7 @@
 		67BBCF271A69E49A009C7DAE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		67F270881BA9FCFF002546A7 /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		68C67D93BFFFC0217931CBB1 /* LinkCreationAITest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkCreationAITest.swift; sourceTree = "<group>"; };
+		6E744D97C008B4DBA0445A4F /* PluginNotifyHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PluginNotifyHybridTest.swift; sourceTree = "<group>"; };
 		704F26B57C08A695724807D8 /* TestScrollHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TestScrollHelpers.swift; sourceTree = "<group>"; };
 		7E6B3B511AA42D0E005F45BF /* Branch-SDK-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch-SDK-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		991B868E49743EF400DE3CA1 /* DeepLinkColdOpenHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeepLinkColdOpenHybridTest.swift; sourceTree = "<group>"; };
@@ -735,6 +743,10 @@
 				2C6F886CF5254858874E0154 /* DeepLinkWarmOpenHybridTest.swift */,
 				BEB8091834A415F87D777F78 /* BrowserExperienceHybridTest.swift */,
 				E4D4DC04AFC52EEBC6E0120A /* NotificationHybridTest.swift */,
+				29BF08D3B7BD908C97F47144 /* TrackingControlHybridTest.swift */,
+				1DF86E2AC9715ADCA6FC0D57 /* ConsumerProtectionHybridTest.swift */,
+				656C68E10670CEE96DC0A93D /* ReferringParamsHybridTest.swift */,
+				6E744D97C008B4DBA0445A4F /* PluginNotifyHybridTest.swift */,
 			);
 			name = Hybrid;
 			path = Hybrid;
@@ -1724,6 +1736,10 @@
 				DAEFBE7C9FFBD455BFBF4EC7 /* DeepLinkWarmOpenHybridTest.swift in Sources */,
 				5974B34F3B3E5074F9DDFEB6 /* BrowserExperienceHybridTest.swift in Sources */,
 				9BEC6ECEF0E0BF1E734B843D /* NotificationHybridTest.swift in Sources */,
+				15843A0C5EBB44E872DFDF8A /* TrackingControlHybridTest.swift in Sources */,
+				805069B9222DE6DBB702BA55 /* ConsumerProtectionHybridTest.swift in Sources */,
+				E369CEFCE0B1105282B6E900 /* ReferringParamsHybridTest.swift in Sources */,
+				884BEA1B0B010B65568A9135 /* PluginNotifyHybridTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
