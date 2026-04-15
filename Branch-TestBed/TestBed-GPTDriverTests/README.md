@@ -76,8 +76,13 @@ TestBed-GPTDriverTests/
 │   ├── ConsumerProtectionHybridTest.swift
 │   ├── ReferringParamsHybridTest.swift
 │   └── PluginNotifyHybridTest.swift         ← XCTSkip until iOS TestBed adds button
-└── AI/                             — 100% AI-driven, no identifiers
-    └── LinkCreationAITest.swift
+├── AI/                             — 100% AI-driven, no identifiers
+│   └── LinkCreationAITest.swift
+├── TestPlans/
+│   ├── Smoke.xctestplan            — fast dev-loop subset (~37s)
+│   └── Release.xctestplan          — full suite (~15m), default in scheme
+└── scripts/
+    └── format-test-results.sh      — parse xcodebuild log into markdown row
 ```
 
 ## Dependencies
@@ -85,6 +90,36 @@ TestBed-GPTDriverTests/
 - Swift Package: `gptd-swift` (≥ 1.9.1, up to next major). Declared in the parent `Branch-TestBed.xcodeproj`.
 - iOS 14.0+ (the minimum platform declared by `gptd-swift`). The host app `Branch-TestBed` still targets iOS 12, so running these tests requires a simulator with iOS ≥ 14.
 - Runs on simulator only (code signing disabled).
+
+## Secret management
+
+The API key is resolved in this order inside `BaseGptDriverTest.resolveApiKey()`:
+
+1. Process environment variable `MOBILEBOOST_API_KEY` (set by `xcodebuild MOBILEBOOST_API_KEY=xxx`)
+2. `MOBILEBOOST_API_KEY` in the test bundle's `Info.plist`, which Xcode substitutes at build time from `Config/MobileBoost.xcconfig` (which optionally `#include?`s `MobileBoost.local.xcconfig`)
+3. Empty → `precondition` failure with a clear message pointing at the example file
+
+Copy [`Config/MobileBoost.local.xcconfig.example`](./Config/MobileBoost.local.xcconfig.example) to `Config/MobileBoost.local.xcconfig` and paste your key. The example file is committed; the real file is gitignored by the `*.local.xcconfig` rule in the repo root `.gitignore`.
+
+## Test Plans
+
+Two Xcode Test Plans live in `TestPlans/` and are wired into the `TestBed-GPTDriverTests` scheme:
+
+| Plan | Tests | Wall time | When to run |
+|---|---|---|---|
+| `Smoke.xctestplan` | 5 cherry-picked fast tests | ~37s | Every PR, tight dev loop |
+| `Release.xctestplan` | Full suite (all 16 classes) | ~15m | Before merging to release branch; default plan in the scheme |
+
+To run a specific plan from the command line:
+
+```bash
+xcodebuild test \
+  -project Branch-TestBed/Branch-TestBed.xcodeproj \
+  -scheme TestBed-GPTDriverTests \
+  -testPlan Smoke \
+  -destination "platform=iOS Simulator,name=iPhone 16,OS=latest" \
+  CODE_SIGNING_ALLOWED=NO
+```
 
 ## Pending TestBed features
 

@@ -137,6 +137,6 @@ printf "| %s | %s | %s | %s | %s | %s | %s | %s |\n" \
   echo "Result:      $RESULT"
   if [[ -n "${PLAN_NAME:-}" ]]; then
     echo ""
-    echo "→ Paste the row above into MOBILEBOOST-OVERVIEW.md under \"iOS — \\\`${PLAN_NAME}\\\` plan\"."
+    echo "→ Test plan: ${PLAN_NAME}"
   fi
 } >&2
