@@ -5,37 +5,46 @@
 //  HYBRID — Tests push / local notification delivery carrying a
 //  Branch deep link.
 //
-//  The iOS TestBed does NOT currently ship with a "Send
-//  Notification" button that generates a Branch link and posts a
-//  local notification. This test is a placeholder skipped at
-//  runtime until the TestBed exposes such a flow.
-//
-//  To enable this test:
-//    1. Add a "Send Notification" button to the Branch TestBed
-//       main screen, wired to an IBAction that:
-//         - Generates a Branch short link via Branch.getShortURL
-//         - Schedules a local UNNotificationRequest with that URL
-//           embedded in `userInfo` so tapping it triggers
-//           Branch.handleUniversalDeepLink.
-//    2. Add an accessibility identifier (e.g. btn_send_notification)
-//       to that button in TestBedIdentifiers.h/.m and
-//       Main.storyboard.
-//    3. Remove the XCTSkip below and implement the real flow:
-//       tap the button, wait for the notification, swipe down from
-//       the top of the screen to reveal Notification Center, tap
-//       the BranchTest notification, assert on the arrival of
-//       deep link params.
-//
 
 import gptd_swift
 import XCTest
 
 final class NotificationHybridTest: BaseGptDriverTest {
     func testSendNotification_createsNotificationWithBranchLink() throws {
-        throw XCTSkip(
-            "iOS Branch TestBed does not yet expose a 'Send Notification' " +
-                "button. See the header comment of this file for the changes " +
-                "required on the TestBed side to enable this test."
+        let button = app.buttons[kTestBedBtnNotificationSend]
+        TestScrollHelpers.scrollUntilVisible(button, in: app)
+        button.tap()
+
+        // Give it time to schedule
+        Thread.sleep(forTimeInterval: 2)
+
+        // AI: Tap the notification. We'll ask the AI to find it wherever it is.
+        // It's most reliable to just ask the AI to handle the notification flow.
+        try driver.execute(
+            "A local notification titled 'Branch Test Notification' should appear shortly. " +
+                "If you see it as a banner, tap it. If not, swipe down from the top to find it in the " +
+                "Notification Center and tap it there. This should open the Branch TestBed app."
         )
+
+        // Give it time to handle the deep link and push the view
+        Thread.sleep(forTimeInterval: 10)
+
+        // DETERMINISTIC CHECK: Did we reach the Logs screen?
+        let logNav = app.navigationBars["Logs"]
+        XCTAssertTrue(
+            logNav.waitForExistence(timeout: 10),
+            "Tapping the notification should have triggered a deep link and pushed the Logs screen"
+        )
+
+        // AI VALIDATION: Verify the content of the logs
+        try driver.assert(
+            "The screen shows Branch deep link metadata (JSON-like text) containing keys such as '~channel' or '~feature'"
+        )
+
+        // Cleanup
+        if logNav.exists {
+            let backButton = app.navigationBars.buttons.element(boundBy: 0)
+            if backButton.exists { backButton.tap() }
+        }
     }
 }

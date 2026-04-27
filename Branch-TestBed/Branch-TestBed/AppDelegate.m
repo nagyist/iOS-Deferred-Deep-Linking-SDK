@@ -13,6 +13,10 @@
 #import "Branch.h"
 #import "BNCEncodingUtils.h"
 #import "BranchEvent.h"
+#import <UserNotifications/UserNotifications.h>
+
+@interface AppDelegate() <UNUserNotificationCenterDelegate>
+@end
 
 AppDelegate* appDelegate = nil;
 void APPLogHookFunction(NSDate*_Nonnull timestamp, BranchLogLevel level, NSString*_Nullable message);
@@ -25,6 +29,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setBranchLogFile];
 
     appDelegate = self;
+    [UNUserNotificationCenter currentNotificationCenter].delegate = self;
 
     /*
        Set Branch.useTestBranchKey = YES; to have Branch use the test key that's in the app's
@@ -339,6 +344,21 @@ void APPLogHookFunction(NSDate*_Nonnull timestamp, BranchLogLevel level, NSStrin
         self.PrevCommandLogFileName = self.logFileName;
         self.logFileName = pathForLog;
     }
+}
+
+#pragma mark - UNUserNotificationCenterDelegate
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
+    completionHandler(UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionSound);
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)(void))completionHandler {
+    [[Branch getInstance] handlePushNotification:response.notification.request.content.userInfo];
+    completionHandler();
 }
 
 @end

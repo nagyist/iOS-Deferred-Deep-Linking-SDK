@@ -29,6 +29,8 @@ NSString * const kTestBedBtnDisableTracking           = @"btn_disable_tracking";
 NSString * const kTestBedBtnLogout                    = @"btn_logout";
 NSString * const kTestBedBtnGoToPasteControl          = @"btn_go_to_paste_control";
 NSString * const kTestBedBtnConsumerProtectionLevel   = @"btn_consumer_protection_level";
+NSString * const kTestBedBtnNotificationSend          = @"btn_notification_send";
+NSString * const kTestBedBtnPluginNotifyInit          = @"btn_plugin_notify_init";
 
 #pragma mark - Buttons (Paste Control scene)
 
