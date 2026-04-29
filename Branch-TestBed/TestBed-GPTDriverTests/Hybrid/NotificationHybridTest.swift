@@ -36,7 +36,8 @@ final class NotificationHybridTest: BaseGptDriverTest {
 
         // AI VALIDATION: Verify the content of the logs
         try driver.assert(
-            "The screen shows Branch deep link metadata (JSON-like text) containing keys such as '~channel' or '~feature'"
+            "The screen shows Branch deep link metadata (JSON-like text) containing " +
+                "keys such as '~channel' or '~feature'"
         )
 
         // Cleanup
