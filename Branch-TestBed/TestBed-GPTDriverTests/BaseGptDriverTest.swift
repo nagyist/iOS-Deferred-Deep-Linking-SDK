@@ -84,6 +84,13 @@ class BaseGptDriverTest: XCTestCase {
         return (field.value as? String) ?? ""
     }
 
+    /// Replaces Thread.sleep with a more deterministic wait using XCTWaiter.
+    /// This avoids blocking the main thread and is generally preferred in XCUITest.
+    func wait(timeout: TimeInterval) {
+        let exp = XCTestExpectation(description: "Deterministic wait for \(timeout)s")
+        XCTWaiter().wait(for: [exp], timeout: timeout)
+    }
+
     // MARK: - Private
 
     private static func resolveApiKey() -> String {
