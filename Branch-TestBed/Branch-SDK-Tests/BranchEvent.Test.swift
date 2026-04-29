@@ -93,7 +93,7 @@ final class BranchEventTestSwift: XCTestCase {
         dictionary = mutableDictionaryFromBundleJSON(withKey: "BranchUniversalObjectJSON")
         if let dictionary = dictionary {
             dictionary["$publicly_indexable"] = nil // Remove this value since we don't add false values.
-            XCTAssert(dictionary.isEqual(to: testDictionary))
+            XCTAssert(dictionary.isEqual(to: testDictionary), "BranchUniversalObject dictionary mismatch against BranchUniversalObjectJSON")
         }
 
         event.contentItems = [branchUniversalObject]
