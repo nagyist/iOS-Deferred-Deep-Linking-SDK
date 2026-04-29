@@ -86,7 +86,7 @@ final class BranchEventTestSwift: XCTestCase {
         var testDictionary = event.dictionary()
         var dictionary = mutableDictionaryFromBundleJSON(withKey: "V2EventProperties")
         if let dictionary = dictionary {
-            XCTAssert(dictionary.isEqual(to: testDictionary))
+            XCTAssert(dictionary.isEqual(to: testDictionary), "BranchEvent dictionary mismatch against V2EventProperties JSON")
         }
 
         testDictionary = (branchUniversalObject.dictionary() as? [AnyHashable: Any]) ?? [:]
