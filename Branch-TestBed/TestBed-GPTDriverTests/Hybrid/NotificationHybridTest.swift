@@ -15,17 +15,16 @@ final class NotificationHybridTest: BaseGptDriverTest {
         TestScrollHelpers.scrollUntilVisible(button, in: app)
         button.tap()
 
-        // Give it time to schedule
-        let expectation = XCTestExpectation(description: "Wait for notification to be scheduled")
-        XCTWaiter().wait(for: [expectation], timeout: 2.0)
+        // Give it a tiny bit of time to trigger the system animation
+        wait(timeout: 0.5)
 
-        // AI: Tap the notification. We'll ask the AI to find it wherever it is.
-        // It's most reliable to just ask the AI to handle the notification flow.
+        // AI: Tap the notification.
+        // We prioritize tapping the banner while it's still visible.
+        // If it's gone, we ask the AI to pull down the notification shade.
         try driver.execute(
-            "A local notification titled 'Branch Test Notification' should appear. " +
-                "If you see it as a banner, tap it immediately. If it's already gone, " +
-                "open the Notification Center (swipe down from the very top edge of the screen) " +
-                "and find the notification there to tap it. This should open the Branch TestBed app."
+            "A notification banner titled 'Branch Test Notification' is appearing at the top of the screen. " +
+                "Tap it immediately. If the banner has already disappeared, pull down the notification shade " +
+                "from the top of the screen, find the 'Branch Test Notification', and tap it."
         )
 
         // Give it time to handle the deep link and push the view
