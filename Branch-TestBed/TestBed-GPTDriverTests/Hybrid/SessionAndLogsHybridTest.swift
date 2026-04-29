@@ -66,7 +66,7 @@ final class SessionAndLogsHybridTest: BaseGptDriverTest {
         logoutButton.tap()
 
         // Give the SDK a moment to complete the logout callback
-        Thread.sleep(forTimeInterval: 2)
+        wait(timeout: 2)
 
         // Soft probe — best-effort confirmation check, does not fail the test
         _ = try? driver.checkBulk([

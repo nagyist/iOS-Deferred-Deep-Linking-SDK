@@ -49,7 +49,7 @@ final class DeepLinkColdOpenHybridTest: BaseGptDriverTest {
 
         // Give the AppDelegate hook its 1.5s delay plus Branch SDK
         // round-trip time to resolve the link metadata.
-        Thread.sleep(forTimeInterval: 5)
+        wait(timeout: 5)
 
         // PHASE 3: verify the deep link was resolved.
         //

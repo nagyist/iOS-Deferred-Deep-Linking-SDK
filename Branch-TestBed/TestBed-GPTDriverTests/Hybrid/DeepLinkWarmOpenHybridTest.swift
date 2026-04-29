@@ -44,14 +44,14 @@ final class DeepLinkWarmOpenHybridTest: BaseGptDriverTest {
         // because the device already has an install record for this
         // user and the same bundle identifier.
         XCUIDevice.shared.press(.home)
-        Thread.sleep(forTimeInterval: 1.5)
+        wait(timeout: 1.5)
 
         app.launchArguments += ["-testDeepLinkURL", generatedUrl]
         app.launch()
 
         // Let the AppDelegate hook deliver the synthetic
         // continueUserActivity and let Branch resolve the link.
-        Thread.sleep(forTimeInterval: 5)
+        wait(timeout: 5)
 
         // PHASE 3: verify the deep link was resolved.
         //

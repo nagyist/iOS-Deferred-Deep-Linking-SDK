@@ -72,7 +72,7 @@ final class UserIdentityHybridTest: BaseGptDriverTest {
         // Branch.logoutWithCallback is async; the success alert (if any)
         // takes a moment to present. We then dismiss it and verify the
         // main screen is still visible.
-        Thread.sleep(forTimeInterval: 3)
+        wait(timeout: 3)
 
         // iOS presents "Logout succeeded" via showAlert on success. If
         // visible, dismiss it.

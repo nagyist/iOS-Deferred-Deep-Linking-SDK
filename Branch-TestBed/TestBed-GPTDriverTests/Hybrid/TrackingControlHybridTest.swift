@@ -27,7 +27,7 @@ final class TrackingControlHybridTest: BaseGptDriverTest {
 
         // PHASE 1: tap once — tracking should flip
         toggle.tap()
-        Thread.sleep(forTimeInterval: 2)
+        wait(timeout: 2)
 
         _ = try? driver.checkBulk([
             "The Disable Tracking button has flipped to a new state (label or " +
@@ -43,7 +43,7 @@ final class TrackingControlHybridTest: BaseGptDriverTest {
         let toggleAgain = app.buttons[kTestBedBtnDisableTracking]
         TestScrollHelpers.scrollUntilVisible(toggleAgain, in: app)
         toggleAgain.tap()
-        Thread.sleep(forTimeInterval: 2)
+        wait(timeout: 2)
 
         _ = try? driver.checkBulk([
             "The Disable Tracking button has flipped back to its original state " +
@@ -62,7 +62,7 @@ final class TrackingControlHybridTest: BaseGptDriverTest {
 
         for _ in 0 ..< 2 {
             toggle.tap()
-            Thread.sleep(forTimeInterval: 1)
+            wait(timeout: 1)
         }
 
         // The SDK should remain functional: generating a link should still work.

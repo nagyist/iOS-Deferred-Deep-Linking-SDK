@@ -43,7 +43,7 @@ final class BrowserExperienceHybridTest: BaseGptDriverTest {
         app.launchArguments += ["-testDeepLinkURL", generatedUrl]
         app.launch()
 
-        Thread.sleep(forTimeInterval: 5)
+        wait(timeout: 5)
 
         // PHASE 3: verify the synthetic Safari handoff was processed.
         //

@@ -72,7 +72,7 @@ final class ConsumerProtectionHybridTest: BaseGptDriverTest {
         let button = app.buttons[kTestBedBtnConsumerProtectionLevel]
         TestScrollHelpers.scrollUntilVisible(button, in: app)
         button.tap()
-        Thread.sleep(forTimeInterval: 1)
+        wait(timeout: 1)
     }
 
     /// Selects the given level via AI (tolerates picker vs action-sheet)
@@ -86,7 +86,7 @@ final class ConsumerProtectionHybridTest: BaseGptDriverTest {
                 "screen. If a Done/OK/Confirm button is required to commit " +
                 "the selection, tap it afterwards."
         )
-        Thread.sleep(forTimeInterval: 2)
+        wait(timeout: 2)
     }
 
     private func assertBackOnMainScreen() throws {
@@ -101,7 +101,7 @@ final class ConsumerProtectionHybridTest: BaseGptDriverTest {
         // Try to dismiss any lingering picker/alert before the next test runs.
         if app.pickerWheels.firstMatch.exists || app.alerts.firstMatch.exists {
             try? driver.execute("Dismiss any remaining dialog or picker on screen")
-            Thread.sleep(forTimeInterval: 1)
+            wait(timeout: 1)
         }
     }
 }

@@ -87,7 +87,7 @@ final class EventLoggingHybridTest: BaseGptDriverTest {
         TestScrollHelpers.scrollUntilVisible(button, in: app)
         button.tap()
 
-        Thread.sleep(forTimeInterval: settleTime)
+        wait(timeout: settleTime)
 
         // Soft probe — logs result on dashboard but doesn't fail the test
         _ = try? driver.checkBulk([probe])
@@ -98,7 +98,7 @@ final class EventLoggingHybridTest: BaseGptDriverTest {
                     "dismiss it (tap Cancel or Close). If no sheet is visible, " +
                     "do nothing."
             )
-            Thread.sleep(forTimeInterval: 2)
+            wait(timeout: 2)
         }
 
         XCTAssertTrue(
