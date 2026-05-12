@@ -46,6 +46,12 @@ def validate_entries(entries):
         errors.append("No Branch SDK requests were captured in the iOS logs.")
         return errors
 
+    # Check for mandatory events (iOS often uses different labels, but we check common patterns)
+    # This ensures we didn't just capture an empty session
+    has_install_or_open = any('device_fingerprint_id' in e.get('request', {}) for e in entries)
+    if not has_install_or_open:
+        errors.append("No critical event (Install/Open) with device_fingerprint_id was found.")
+
     print(f"Captured {len(entries)} Branch requests. Starting validation...")
     
     for i, entry in enumerate(entries):
