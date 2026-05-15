@@ -248,6 +248,7 @@
 		C17DAF7B2AC20C2000B16B1A /* BranchClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C17DAF7A2AC20C2000B16B1A /* BranchClassTests.m */; };
 		C1CC888229BAAFC000BDD2B5 /* BNCReferringURLUtilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CC888129BAAFC000BDD2B5 /* BNCReferringURLUtilityTests.m */; };
 		D90E8A6639F523DC3B08FBCE /* LinkCreationDeterministicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA914FAFCA750AE7C6CDCFCC /* LinkCreationDeterministicTest.swift */; };
+		E1A0001A0000000000000AA1 /* L1WireValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0002A0000000000000AA2 /* L1WireValidationTest.swift */; };
 		DAEFBE7C9FFBD455BFBF4EC7 /* DeepLinkWarmOpenHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F886CF5254858874E0154 /* DeepLinkWarmOpenHybridTest.swift */; };
 		DB18DA9C84F60B550B04B3FC /* DeepLinkColdOpenHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B868E49743EF400DE3CA1 /* DeepLinkColdOpenHybridTest.swift */; };
 		E369CEFCE0B1105282B6E900 /* ReferringParamsHybridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C68E10670CEE96DC0A93D /* ReferringParamsHybridTest.swift */; };
@@ -615,6 +616,7 @@
 		C1CC888129BAAFC000BDD2B5 /* BNCReferringURLUtilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCReferringURLUtilityTests.m; sourceTree = "<group>"; };
 		CC1798D4BBC4E0E40ADA9310 /* TestBedIdentifiers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TestBedIdentifiers.m; sourceTree = "<group>"; };
 		DA914FAFCA750AE7C6CDCFCC /* LinkCreationDeterministicTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkCreationDeterministicTest.swift; sourceTree = "<group>"; };
+		E1A0002A0000000000000AA2 /* L1WireValidationTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = L1WireValidationTest.swift; sourceTree = "<group>"; };
 		E4D4DC04AFC52EEBC6E0120A /* NotificationHybridTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NotificationHybridTest.swift; sourceTree = "<group>"; };
 		E50AA43771267258B0293FD1 /* TestBed-GPTDriverTests-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TestBed-GPTDriverTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		E51F64292CF46899000858D2 /* BranchFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchFileLogger.h; sourceTree = "<group>"; };
@@ -1158,6 +1160,7 @@
 			isa = PBXGroup;
 			children = (
 				DA914FAFCA750AE7C6CDCFCC /* LinkCreationDeterministicTest.swift */,
+				E1A0002A0000000000000AA2 /* L1WireValidationTest.swift */,
 			);
 			name = Deterministic;
 			path = Deterministic;
@@ -1736,6 +1739,7 @@
 			files = (
 				257BD6BD304B0B87C0BDF67C /* BaseGptDriverTest.swift in Sources */,
 				D90E8A6639F523DC3B08FBCE /* LinkCreationDeterministicTest.swift in Sources */,
+				E1A0001A0000000000000AA1 /* L1WireValidationTest.swift in Sources */,
 				2FE60ACC53E3DDB95CB49E7C /* LinkCreationHybridTest.swift in Sources */,
 				EBB12FFFEE5BB34E5505BBB9 /* LinkCreationAITest.swift in Sources */,
 				143A1100894AF12F8F5E4CFB /* TestBedIdentifiers.m in Sources */,
