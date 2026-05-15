@@ -109,19 +109,36 @@ def _is_number(v):
     return isinstance(v, (int, float)) and not isinstance(v, bool)
 
 
+def _effective_device_block(req):
+    """
+    On /v2/* endpoints the iOS SDK nests device/sdk identity fields under
+    `user_data` instead of placing them at the top of the payload (see the
+    docstring at the top of this file). The "effective" block to read these
+    identity fields from is therefore `user_data` when it is a dict, else
+    the request itself.
+    """
+    user_data = req.get("user_data")
+    if isinstance(user_data, dict):
+        return user_data
+    return req
+
+
 def _validate_sdk_field(req):
     """
     iOS may emit one of two valid shapes:
-      A) v1 endpoints: `sdk = "ios<version>"` (no separate sdk_version)
-      B) v2 endpoints: `sdk = "ios"` and `sdk_version = "<version>"`
+      A) v1 endpoints: `sdk = "ios<version>"` at TOP level
+         (no separate sdk_version)
+      B) v2 endpoints: `sdk = "ios"` and `sdk_version = "<version>"` nested
+         under `user_data`
     Returns an error string or None.
     """
-    sdk = req.get("sdk")
+    block = _effective_device_block(req)
+    sdk = block.get("sdk")
     if not _is_str(sdk):
         return f"missing or invalid 'sdk' (got {type(sdk).__name__})"
 
     if sdk == "ios":
-        sdk_version = req.get("sdk_version")
+        sdk_version = block.get("sdk_version")
         if not _is_str(sdk_version):
             return (
                 "'sdk' is 'ios' but 'sdk_version' is missing/invalid "
