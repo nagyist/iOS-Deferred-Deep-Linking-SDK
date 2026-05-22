@@ -35,13 +35,19 @@ the backend ingestion gate.
 
 The required field list lives at the top of `validate_l1_logs.py`:
 
-- `REQUIRED_COMMON` — fields the SDK must put on every `/v1/*` request.
-- `REQUIRED_PER_ENDPOINT` — additional fields per endpoint (e.g.
-  `is_hardware_id_real` and `first_install_time` on `/v1/install`).
+- `REQUIRED_COMMON` — fields the SDK puts on every `/v1/*` request.
+- `REQUIRED_PER_ENDPOINT` — additional fields per endpoint
+  (`is_hardware_id_real` and `first_install_time` on `/v1/install`;
+  `randomized_device_token` on `/v1/open`).
 
-Lookups tolerate `user_data` nesting so `/v2/event/*` payloads (where iOS
-moves device fields under `user_data`) still validate using the same code
-path.
+Required-field checks are scoped to `/v1/*` only. Captured non-v1
+endpoints (e.g. `/v2/event/*`, where iOS uses a different schema with
+device fields nested under `user_data` and different identity fields)
+get their payload printed for visibility but do not fail the run — the
+L1 contract covers v1 only.
+
+Lookups tolerate `user_data` nesting so payloads using that shape are
+still resolved correctly via the same code path.
 
 ## What gets printed on success
 
