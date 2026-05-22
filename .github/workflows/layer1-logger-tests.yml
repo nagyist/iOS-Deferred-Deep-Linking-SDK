@@ -17,6 +17,8 @@ on:
       - "Branch-TestBed/**"
       - ".github/workflows/layer1-logger-tests.yml"
       - "scripts/validate_l1_logs.py"
+      - "scripts/test_validate_l1_logs.py"
+      - "scripts/fixtures/**"
       - "scripts/run_l1_instrumented.sh"
   workflow_dispatch:
 
@@ -85,6 +87,14 @@ jobs:
         with:
           python-version: "3.x"
 
+      # Self-test the validator first. A regression in validate_l1_logs.py
+      # itself (broken parser, missing required field in the contract,
+      # faulty masking) would otherwise surface as a false PASS on the real
+      # branchlogs.txt — the self-test catches it ahead of the simulator
+      # capture.
+      - name: Run L1 validator unit tests
+        run: python3 -m unittest scripts.test_validate_l1_logs -v
+
       # Validate first (raw log) so we can assert real value prefixes like
       # branch_key starting with "key_test_"/"key_live_". The validator
       # itself never echoes payload contents to stdout, so the only place
@@ -111,6 +121,10 @@ jobs:
               -e 's/"google_advertising_id"[[:space:]]*:[[:space:]]*"[^"]*"/"google_advertising_id": "***"/g' \
               -e 's/"randomized_device_token"[[:space:]]*:[[:space:]]*"[^"]*"/"randomized_device_token": "***"/g' \
               -e 's/"randomized_bundle_token"[[:space:]]*:[[:space:]]*"[^"]*"/"randomized_bundle_token": "***"/g' \
+              -e 's/"device_fingerprint_id"[[:space:]]*:[[:space:]]*"[^"]*"/"device_fingerprint_id": "***"/g' \
+              -e 's/"identity"[[:space:]]*:[[:space:]]*"[^"]*"/"identity": "***"/g' \
+              -e 's/"developer_identity"[[:space:]]*:[[:space:]]*"[^"]*"/"developer_identity": "***"/g' \
+              -e 's/"apple_attribution_token"[[:space:]]*:[[:space:]]*"[^"]*"/"apple_attribution_token": "***"/g' \
               branchlogs.txt
             rm -f branchlogs.txt.bak
           fi
