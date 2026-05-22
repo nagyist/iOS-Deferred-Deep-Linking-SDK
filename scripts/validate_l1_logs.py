@@ -41,6 +41,9 @@ REQUEST_LINE_RE = re.compile(
 # intentionally absent — iOS does not emit them. See the v4 Conversion API
 # parity tracker for the future-alignment plan.
 REQUIRED_COMMON = [
+    # TEMPORARY: synthetic break to demonstrate the gate catches missing
+    # required fields against a real CI capture. Removed in the next commit.
+    "INTENTIONAL_CI_RED_TEST_remove_after_verification",
     "branch_key",
     "sdk",
     "branch_sdk_request_timestamp",
