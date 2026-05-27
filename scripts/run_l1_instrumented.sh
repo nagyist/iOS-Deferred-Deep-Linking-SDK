@@ -50,7 +50,13 @@ echo "    Bundle id        : $BUNDLE_ID"
 # Boot the simulator first so subsequent simctl commands target an awake
 # device. `simctl boot` is idempotent (no-op if already booted).
 echo "==> Booting simulator '$SIM_NAME'..."
-SIM_UDID=$(xcrun simctl list devices "$SIM_NAME" available -j \
+# `simctl list devices` expects `[available]` before the optional search
+# term, not after. Putting `$SIM_NAME` first causes `available` to be
+# treated as part of the name filter, and on some Xcode versions the JSON
+# silently returns no matches. Drop the bash-level name filter and let
+# the Python below do the name match — the JSON already only contains
+# available devices.
+SIM_UDID=$(xcrun simctl list devices available -j \
     | python3 -c '
 import json, sys
 data = json.load(sys.stdin)
