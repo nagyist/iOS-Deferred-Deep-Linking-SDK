@@ -93,7 +93,7 @@ def parse_branch_logs(file_path):
     entries = []
     with open(file_path, "r", encoding="utf-8", errors="replace") as f:
         for line_no, raw in enumerate(f, start=1):
-            line = raw.rstrip("\n")
+            line = raw.rstrip("\r\n")
             match = REQUEST_LINE_RE.search(line)
             if not match:
                 continue
