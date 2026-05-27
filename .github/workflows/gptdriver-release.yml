@@ -6,6 +6,9 @@ on:
       - "Release-*"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   BuildAndTestOnMobileBoost:
     runs-on: macos-latest
