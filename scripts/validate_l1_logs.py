@@ -73,7 +73,6 @@ SENSITIVE_FIELDS = {
     "randomized_device_token",
     "randomized_bundle_token",
     "device_fingerprint_id",
-    "google_advertising_id",
     "idfa",
     "idfv",
     "anon_id",
