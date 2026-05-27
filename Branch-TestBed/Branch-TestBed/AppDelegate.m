@@ -56,13 +56,21 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         
         if (request) {
             NSString *jsonString = [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding];
-            NSLog(@"[BranchLog] Got %@ Request: %@", request.URL , jsonString);
+            NSString *requestLine = [NSString stringWithFormat:@"[BranchLog] Got %@ Request: %@", request.URL, jsonString];
+            NSLog(@"%@", requestLine);
+            // L1 wire validation: mirror the request line to branchlogs.txt so
+            // CI can parse it via scripts/validate_l1_logs.py. The newline
+            // terminator keeps each request on its own line for the regex
+            // parser, even when several requests fire back-to-back.
+            [appDelegate processLogMessage:[requestLine stringByAppendingString:@"\n"]];
         }
-        
+
         if (response) {
-            NSLog(@"[BranchLog] Got Response for request (%@): %@", response.requestId, response.data);
+            NSString *responseLine = [NSString stringWithFormat:@"[BranchLog] Got Response for request (%@): %@", response.requestId, response.data];
+            NSLog(@"%@", responseLine);
+            [appDelegate processLogMessage:[responseLine stringByAppendingString:@"\n"]];
         }
-        
+
         NSString *logEntry = error ? [NSString stringWithFormat:@"Level: %lu, Message: %@, Error: %@", (unsigned long)logLevel, message, error.localizedDescription]
                                    : [NSString stringWithFormat:@"Level: %lu, Message: %@", (unsigned long)logLevel, message];
         APPLogHookFunction([NSDate date], logLevel, logEntry);

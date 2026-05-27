@@ -1,0 +1,121 @@
+name: Layer 1 - SDK Wire Validation (iOS PR Gate)
+
+on:
+  pull_request:
+    # Base branches we PR into. We include the active integration branch
+    # (wpinho-branch/mobileboost-ios-tests) because the L1 feature branch is
+    # currently stacked on top of it — without this entry, PRs from the L1
+    # branch into the integration branch would never trigger.
+    branches:
+      - master
+      - main
+      - wpinho-branch/mobileboost-ios-tests
+    # Only run when something that can change the wire actually changed.
+    paths:
+      - "Sources/BranchSDK/**"
+      - "Sources/BranchSwiftSDK/**"
+      - "Branch-TestBed/**"
+      - ".github/workflows/layer1-logger-tests.yml"
+      - "scripts/validate_l1_logs.py"
+      - "scripts/test_validate_l1_logs.py"
+      - "scripts/fixtures/**"
+      - "scripts/run_l1_instrumented.sh"
+  workflow_dispatch:
+
+concurrency:
+  group: l1-ios-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-wire-logs:
+    # Pin macos-15 (not macos-latest) so the runner image doesn't shift
+    # underneath us when GitHub flips the default. macos-15 ships with
+    # Xcode 16.x by default which is what the TestBed scheme expects
+    # (LastUpgradeVersion = 1600).
+    runs-on: macos-15
+    # Skip draft PRs but always allow manual dispatch (where
+    # github.event.pull_request is null).
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.draft == false
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      # setup-xcode is more robust than `sudo xcode-select -s` because the
+      # exact Xcode_16.x.app path varies between runner image revisions.
+      - name: Select Xcode 16
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: "16"
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          xcrun simctl list runtimes | tail -10
+
+      # We do NOT pass `-testPlan L1Validation` here because adding the
+      # plan to the shared scheme would conflict with an unrelated WIP
+      # change on the same scheme file. Instead we rely on `-only-testing`
+      # in the runner step to scope execution to the L1 test class. The
+      # L1Validation.xctestplan file is shipped for local Xcode use.
+      - name: Build TestBed for testing
+        run: |
+          xcodebuild build-for-testing \
+            -project Branch-TestBed/Branch-TestBed.xcodeproj \
+            -scheme TestBed-GPTDriverTests \
+            -derivedDataPath ./DerivedData \
+            -destination "platform=iOS Simulator,name=iPhone 16,OS=latest" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: Run L1 instrumentation
+        env:
+          DERIVED_DATA_DIR: ./DerivedData
+          SIM_NAME: iPhone 16
+          SIM_OS: latest
+          PROJECT_PATH: Branch-TestBed/Branch-TestBed.xcodeproj
+          SCHEME: TestBed-GPTDriverTests
+          ONLY_TESTING: TestBed-GPTDriverTests/L1WireValidationTest
+          BUNDLE_ID: io.branch.sdk.Branch-TestBed
+          OUTPUT_LOG: branchlogs.txt
+        run: ./scripts/run_l1_instrumented.sh
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      # Self-test the validator first. A regression in validate_l1_logs.py
+      # itself (broken parser, missing required field in the contract,
+      # faulty masking) would otherwise surface as a false PASS on the real
+      # branchlogs.txt — the self-test catches it ahead of the simulator
+      # capture.
+      - name: Run L1 validator unit tests
+        run: python3 -m unittest scripts.test_validate_l1_logs -v
+
+      # The validator itself only ever prints the payload with sensitive
+      # values masked, so stdout is safe. The raw branchlogs.txt is only
+      # surfaced via the artifact upload below, which is gated to failures
+      # on same-repo PRs (forks already cannot upload artifacts).
+      - name: Validate wire logs
+        id: validate
+        run: python3 scripts/validate_l1_logs.py branchlogs.txt
+
+      # Only upload from PRs originating in this repo. Forked PRs already
+      # have GITHUB_TOKEN write restrictions, so the raw log never escapes
+      # to fork artifacts.
+      - name: Upload wire logs on failure
+        if: failure() && github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-wire-logs
+          path: branchlogs.txt
+          retention-days: 7
+
+      - name: Teardown simulator
+        if: always()
+        run: |
+          xcrun simctl shutdown all || true
+          killall -9 Simulator || true

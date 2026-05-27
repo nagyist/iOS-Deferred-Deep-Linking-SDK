@@ -1,0 +1,49 @@
+name: GPTDriver Release Automation (iOS)
+
+on:
+  push:
+    branches:
+      - "Release-*"
+  workflow_dispatch:
+
+jobs:
+  BuildAndTestOnMobileBoost:
+    runs-on: macos-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: "15.4"
+
+      - name: Build TestBed App for Simulator
+        run: |
+          xcodebuild build \
+            -project Branch-TestBed/Branch-TestBed.xcodeproj \
+            -scheme Branch-TestBed \
+            -destination "platform=iOS Simulator,name=iPhone 15" \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Zip App Bundle
+        run: |
+          cd build/Build/Products/Debug-iphonesimulator
+          zip -r Branch-TestBed.zip Branch-TestBed.app
+
+      - name: Run MobileBoost Release Plan
+        env:
+          MOBILEBOOST_API_KEY: ${{ secrets.MOBILEBOOST_API_KEY }}
+        run: |
+          # Assuming mobileboost CLI is available or using a run script
+          # Using the standardized release tag for parity with Android.
+          # Secret is read from env (not argv) so it does not appear in
+          # process listings on the runner.
+          mobileboost run \
+            --app build/Build/Products/Debug-iphonesimulator/Branch-TestBed.zip \
+            --platform ios \
+            --tags Release \
+            --token "$MOBILEBOOST_API_KEY"
