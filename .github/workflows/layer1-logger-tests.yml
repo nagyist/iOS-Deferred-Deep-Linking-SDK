@@ -95,44 +95,18 @@ jobs:
       - name: Run L1 validator unit tests
         run: python3 -m unittest scripts.test_validate_l1_logs -v
 
-      # Validate first (raw log) so we can assert real value prefixes like
-      # branch_key starting with "key_test_"/"key_live_". The validator
-      # itself never echoes payload contents to stdout, so the only place
-      # raw values could surface is the artifact upload below — which is
-      # gated to the sanitized copy.
+      # The validator itself only ever prints the payload with sensitive
+      # values masked, so stdout is safe. The raw branchlogs.txt is only
+      # surfaced via the artifact upload below, which is gated to failures
+      # on same-repo PRs (forks already cannot upload artifacts).
       - name: Validate wire logs
         id: validate
         run: python3 scripts/validate_l1_logs.py branchlogs.txt
 
-      # Always sanitize before upload, even on success. We replace values
-      # for branch_key, hardware_id, idfa, idfv, anon_id, ad ids, and the
-      # randomized tokens. Field NAMES are preserved so the artifact remains
-      # useful for debugging.
-      - name: Sanitize wire logs for artifact
-        if: always()
-        run: |
-          if [ -f branchlogs.txt ]; then
-            sed -E -i.bak \
-              -e 's/"branch_key"[[:space:]]*:[[:space:]]*"[^"]*"/"branch_key": "***"/g' \
-              -e 's/"hardware_id"[[:space:]]*:[[:space:]]*"[^"]*"/"hardware_id": "***"/g' \
-              -e 's/"idfa"[[:space:]]*:[[:space:]]*"[^"]*"/"idfa": "***"/g' \
-              -e 's/"idfv"[[:space:]]*:[[:space:]]*"[^"]*"/"idfv": "***"/g' \
-              -e 's/"anon_id"[[:space:]]*:[[:space:]]*"[^"]*"/"anon_id": "***"/g' \
-              -e 's/"google_advertising_id"[[:space:]]*:[[:space:]]*"[^"]*"/"google_advertising_id": "***"/g' \
-              -e 's/"randomized_device_token"[[:space:]]*:[[:space:]]*"[^"]*"/"randomized_device_token": "***"/g' \
-              -e 's/"randomized_bundle_token"[[:space:]]*:[[:space:]]*"[^"]*"/"randomized_bundle_token": "***"/g' \
-              -e 's/"device_fingerprint_id"[[:space:]]*:[[:space:]]*"[^"]*"/"device_fingerprint_id": "***"/g' \
-              -e 's/"identity"[[:space:]]*:[[:space:]]*"[^"]*"/"identity": "***"/g' \
-              -e 's/"developer_identity"[[:space:]]*:[[:space:]]*"[^"]*"/"developer_identity": "***"/g' \
-              -e 's/"apple_attribution_token"[[:space:]]*:[[:space:]]*"[^"]*"/"apple_attribution_token": "***"/g' \
-              branchlogs.txt
-            rm -f branchlogs.txt.bak
-          fi
-
       # Only upload from PRs originating in this repo. Forked PRs already
-      # have GITHUB_TOKEN write restrictions, but we also keep even the
-      # sanitized log off forked-PR artifacts as a defense-in-depth measure.
-      - name: Upload sanitized logs on failure
+      # have GITHUB_TOKEN write restrictions, so the raw log never escapes
+      # to fork artifacts.
+      - name: Upload wire logs on failure
         if: failure() && github.event.pull_request.head.repo.full_name == github.repository
         uses: actions/upload-artifact@v4
         with:
