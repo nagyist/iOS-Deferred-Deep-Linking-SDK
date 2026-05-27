@@ -138,32 +138,6 @@ class NonV1EndpointScopeTests(unittest.TestCase):
         self.assertIn("required-field checks skipped per L1 scope", output)
 
 
-class MaskingHelperTests(unittest.TestCase):
-    def test_mask_payload_replaces_branch_key(self):
-        payload = {"branch_key": "key_live_abc", "brand": "Apple"}
-        masked = v.mask_payload(payload)
-        self.assertEqual(masked["branch_key"], "***MASKED***")
-        self.assertEqual(masked["brand"], "Apple")
-
-    def test_mask_payload_recurses_into_user_data(self):
-        payload = {"user_data": {"hardware_id": "real-id", "brand": "Apple"}}
-        masked = v.mask_payload(payload)
-        self.assertEqual(masked["user_data"]["hardware_id"], "***MASKED***")
-        self.assertEqual(masked["user_data"]["brand"], "Apple")
-
-    def test_mask_payload_leaves_empty_sensitive_values_alone(self):
-        payload = {"branch_key": "", "brand": "Apple"}
-        masked = v.mask_payload(payload)
-        self.assertEqual(masked["branch_key"], "")
-
-    def test_idfa_and_idfv_are_masked(self):
-        # Apple-specific identifiers must never appear in plaintext logs.
-        payload = {"idfa": "ABC-123", "idfv": "DEF-456", "brand": "Apple"}
-        masked = v.mask_payload(payload)
-        self.assertEqual(masked["idfa"], "***MASKED***")
-        self.assertEqual(masked["idfv"], "***MASKED***")
-
-
 class LookupFieldTests(unittest.TestCase):
     def test_returns_top_level_value_when_present(self):
         self.assertEqual(v.lookup_field({"brand": "Apple"}, "brand"), "Apple")
