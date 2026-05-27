@@ -41,12 +41,11 @@ jobs:
         env:
           MOBILEBOOST_API_KEY: ${{ secrets.MOBILEBOOST_API_KEY }}
         run: |
-          # Assuming mobileboost CLI is available or using a run script
-          # Using the standardized release tag for parity with Android.
-          # Secret is read from env (not argv) so it does not appear in
-          # process listings on the runner.
+          # Token is consumed from the MOBILEBOOST_API_KEY env var by the
+          # CLI; passing it via argv (`--token "$VAR"`) would shell-expand
+          # the secret into the process arguments and expose it to anyone
+          # running `ps aux` on the runner, defeating the env-var lift.
           mobileboost run \
             --app build/Build/Products/Debug-iphonesimulator/Branch-TestBed.zip \
             --platform ios \
-            --tags Release \
-            --token "$MOBILEBOOST_API_KEY"
+            --tags Release
