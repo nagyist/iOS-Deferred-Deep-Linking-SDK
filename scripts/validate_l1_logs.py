@@ -7,9 +7,8 @@ be on the wire. Presence-only check — a missing field fails the run; field
 contents are not type-checked.
 
 On success the validator prints the full payload for every captured request
-(with sensitive values masked) plus a per-field check table so reviewers can
-verify what actually went over the wire — no more silent passes when a value
-is wrong.
+plus a per-field check table so reviewers can verify what actually went over
+the wire — no more silent passes when a value is wrong.
 
 Source of truth for the parser: the Branch-TestBed AppDelegate registers a
 `BranchAdvancedLogCallback`. For every outbound request the callback emits
@@ -66,21 +65,6 @@ REQUIRED_PER_ENDPOINT = {
     "/v1/url": [],
 }
 
-# Fields whose values must never appear unredacted in CI logs.
-SENSITIVE_FIELDS = {
-    "branch_key",
-    "hardware_id",
-    "randomized_device_token",
-    "randomized_bundle_token",
-    "device_fingerprint_id",
-    "idfa",
-    "idfv",
-    "anon_id",
-    "developer_identity",
-    "identity",
-    "apple_attribution_token",
-}
-
 
 def parse_branch_logs(file_path):
     """Walk branchlogs.txt and pull each `[BranchLog] Got <URL> Request: <body>`
@@ -104,7 +88,6 @@ def parse_branch_logs(file_path):
             try:
                 request = json.loads(body_str)
             except json.JSONDecodeError as e:
-                # Never echo the body itself — it may contain branch_key etc.
                 print(f"Warning: line {line_no}: failed to parse request JSON: {e}")
                 continue
 
@@ -137,26 +120,6 @@ def is_present(value):
     return True
 
 
-def mask_payload(payload):
-    """Deep copy with values for SENSITIVE_FIELDS replaced by ***MASKED***."""
-    masked = {}
-    for key, value in payload.items():
-        if key in SENSITIVE_FIELDS and is_present(value):
-            masked[key] = "***MASKED***"
-        elif isinstance(value, dict):
-            masked[key] = mask_payload(value)
-        else:
-            masked[key] = value
-    return masked
-
-
-def display_value(field, value):
-    """Return the value as it should appear in the per-field table."""
-    if field in SENSITIVE_FIELDS and is_present(value):
-        return "***MASKED***"
-    return value
-
-
 def validate_request(entry, idx, total):
     """Print the full payload + per-field table for one request. Return a
     list of error strings (empty when everything required is present).
@@ -180,9 +143,8 @@ def validate_request(entry, idx, total):
         errors.append(f"Request {idx} ({uri}): payload is not a JSON object")
         return errors
 
-    masked = mask_payload(request)
-    print("Full payload (sensitive values masked):")
-    print(json.dumps(masked, indent=2, sort_keys=True))
+    print("Full payload:")
+    print(json.dumps(request, indent=2, sort_keys=True))
     print()
 
     if not uri.startswith("/v1/"):
@@ -196,7 +158,7 @@ def validate_request(entry, idx, total):
         present = is_present(value)
         marker = "✓" if present else "✗"
         if present:
-            print(f"  {marker} {field:<35} {display_value(field, value)}")
+            print(f"  {marker} {field:<35} {value}")
         else:
             print(f"  {marker} {field:<35} MISSING")
             errors.append(f"Request {idx} ({uri}): missing required field '{field}'")

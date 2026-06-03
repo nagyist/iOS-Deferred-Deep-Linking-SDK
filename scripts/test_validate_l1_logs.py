@@ -58,14 +58,8 @@ class HappyPathTests(unittest.TestCase):
 
     def test_prints_full_payload(self):
         _, output = _run_validation("happy_path.txt")
-        self.assertIn("Full payload (sensitive values masked):", output)
+        self.assertIn("Full payload:", output)
         self.assertIn('"brand": "Apple"', output)
-
-    def test_masks_sensitive_values(self):
-        _, output = _run_validation("happy_path.txt")
-        self.assertNotIn("key_test_abc123", output)
-        self.assertNotIn("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE", output)
-        self.assertIn("***MASKED***", output)
 
     def test_prints_check_table(self):
         _, output = _run_validation("happy_path.txt")

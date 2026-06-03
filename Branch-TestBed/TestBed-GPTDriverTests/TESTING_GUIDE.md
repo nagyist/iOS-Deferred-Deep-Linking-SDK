@@ -32,7 +32,7 @@ The same flow should typically live in all three modes as separate test classes,
    - `generateBranchLink(timeout:)` — taps Create Branch Link and polls the text field until a real HTTPS URL appears.
    - `waitForLinkInField(_:timeout:)` — raw polling helper.
    - `TestScrollHelpers.scrollUntilVisible(_:in:)` — scrolls a container until a below-the-fold element is hittable.
-4. **Use `try driver.*` for AI calls.** All GPTDriver methods throw. In tearDown we use `try?` on `setSessionSucceeded` / `setSessionFailed` because those shouldn't mask real test failures.
+4. **Use `try driver.*` for AI calls.** All GPTDriver methods throw. In tearDown we use `try?` on `setSessionSucceeded` / `setSessionFailed` because those shouldn't hide real test failures.
 5. **Do NOT call `driver.setSessionSucceeded()` inside your test methods.** Session status is set automatically by `tearDownWithError` based on `testRun.failureCount`. Calling it manually in a passing branch can create false positives on failed runs.
 6. **Check lint before committing:** `swiftformat TestBed-GPTDriverTests/` and `swiftlint lint --quiet TestBed-GPTDriverTests/` should both report zero warnings.
 

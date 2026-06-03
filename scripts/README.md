@@ -51,23 +51,17 @@ still resolved correctly via the same code path.
 
 ## What gets printed on success
 
-For every captured request: the full payload (with sensitive values
-masked) plus a per-field check table showing the actual value that went
-over the wire. This is the answer to the reviewer feedback on PR #1590 —
-silent passes are no longer possible because every field's value is
-visible in the CI log.
+For every captured request: the full payload plus a per-field check
+table showing the actual value that went over the wire. This is the
+answer to the reviewer feedback on PR #1590 — silent passes are no
+longer possible because every field's value is visible in the CI log.
 
 ## Adding a new required field
 
 1. Add the field name to `REQUIRED_COMMON` (every request) or
    `REQUIRED_PER_ENDPOINT[<path>]` (endpoint-scoped).
-2. If the field carries a secret/PII, add it to `SENSITIVE_FIELDS` so the
-   value is masked in both the per-field table and the full-payload dump.
-3. Add a fixture to `scripts/fixtures/` and a test in
+2. Add a fixture to `scripts/fixtures/` and a test in
    `scripts/test_validate_l1_logs.py` covering the missing-field case.
-4. Update the sanitization step in
-   `.github/workflows/layer1-logger-tests.yml` so the value is also
-   stripped from any uploaded artifact.
 
 ## Platform parity
 
