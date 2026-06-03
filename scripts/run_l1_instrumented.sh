@@ -66,7 +66,7 @@ for runtime, devices in data["devices"].items():
             print(d["udid"])
             sys.exit(0)
 sys.exit(1)
-' "$SIM_NAME")
+' "$SIM_NAME") || true
 
 if [ -z "$SIM_UDID" ]; then
     echo "ERROR: no available simulator named '$SIM_NAME'. Listing available:"
