@@ -12,10 +12,13 @@ import XCTest
 final class NotificationHybridTest: BaseGptDriverTest {
     override func setUpWithError() throws {
         try super.setUpWithError()
-        // Defensive guard: if a future revision adds an XCTSkip in the test
-        // body (e.g. the host-app `btn_notification_send` is temporarily
-        // unwired), avoid failing setUp before the skip can be reached.
-        guard app.buttons[kTestBedBtnNotificationSend].exists else { return }
+        // Skip cleanly when the host-app `btn_notification_send` is not
+        // wired — otherwise the warm-up below (and the test body) fail on
+        // a missing button instead of reporting a skip.
+        try XCTSkipUnless(
+            app.buttons[kTestBedBtnNotificationSend].exists,
+            "Host-app button btn_notification_send is not wired"
+        )
         warmUpNotificationPermission()
     }
 
