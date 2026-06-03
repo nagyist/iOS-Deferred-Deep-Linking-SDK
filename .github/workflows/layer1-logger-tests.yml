@@ -22,6 +22,9 @@ on:
       - "scripts/run_l1_instrumented.sh"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
   group: l1-ios-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -88,17 +91,15 @@ jobs:
           python-version: "3.x"
 
       # Self-test the validator first. A regression in validate_l1_logs.py
-      # itself (broken parser, missing required field in the contract,
-      # faulty masking) would otherwise surface as a false PASS on the real
-      # branchlogs.txt — the self-test catches it ahead of the simulator
-      # capture.
+      # itself (broken parser, missing required field in the contract)
+      # would otherwise surface as a false PASS on the real branchlogs.txt
+      # — the self-test catches it ahead of the simulator capture.
       - name: Run L1 validator unit tests
         run: python3 -m unittest scripts.test_validate_l1_logs -v
 
-      # The validator itself only ever prints the payload with sensitive
-      # values masked, so stdout is safe. The raw branchlogs.txt is only
-      # surfaced via the artifact upload below, which is gated to failures
-      # on same-repo PRs (forks already cannot upload artifacts).
+      # The raw branchlogs.txt is only surfaced via the artifact upload
+      # below, which is gated to failures on same-repo PRs (forks already
+      # cannot upload artifacts).
       - name: Validate wire logs
         id: validate
         run: python3 scripts/validate_l1_logs.py branchlogs.txt
